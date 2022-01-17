@@ -2,6 +2,7 @@
 let gameActive = false;
 let startButton = document.querySelector(".start-btn");
 let boxes = document.querySelectorAll(".box");
+let playingBoard = document.querySelector(".board");
 let playerTurnDisplay = document.querySelector(".player-turn");
 let circle = '<i class="far fa-circle" value="circle"></i>';
 let cross = '<i class="fas fa-times" value="cross"></i>';
@@ -16,6 +17,7 @@ startButton.addEventListener("click", ()=>{
     playerTurn = 1;
     startButton.classList.add("hide");
     playerTurnDisplay.classList.remove("hide");
+    playingBoard.classList.remove("hide");
     playerTurnDisplay.innerText = `Player ${playerTurn}, it's your turn`;
     boxes.forEach((box)=>{
         if (gameActive === true){
@@ -69,4 +71,5 @@ function clearAndRestart(){
     gameActive = false;
     playerTurnDisplay.classList.add("hide");
     startButton.classList.remove("hide");
+    playingBoard.classList.add("hide");
 }
