@@ -6,11 +6,14 @@ let playerTurnDisplay = document.querySelector(".player-turn");
 let circle = '<i class="far fa-circle" value="circle"></i>';
 let cross = '<i class="fas fa-times" value="cross"></i>';
 let win = false;
+let playerTurn;
+let myWinChecker;
 
 
 startButton.addEventListener("click", ()=>{
+    myWinChecker = setInterval(checkWin, 100);
     gameActive = true;
-    let playerTurn = 1;
+    playerTurn = 1;
     startButton.classList.add("hide");
     playerTurnDisplay.classList.remove("hide");
     playerTurnDisplay.innerText = `Player ${playerTurn}, it's your turn`;
@@ -37,34 +40,33 @@ startButton.addEventListener("click", ()=>{
 
 function checkWin(){
     if ((boxes[0].innerHTML != "" && boxes[1].innerHTML != "" && boxes[2].innerHTML != "") && (boxes[0].innerHTML == boxes[1].innerHTML && boxes[0].innerHTML == boxes[2].innerHTML)){
-        console.log("yay");
-        clearInterval(myWinChecker);
-        gameActive = false;
+        clearAndRestart();
     } else if ((boxes[0].innerHTML != "" && boxes[3].innerHTML != "" && boxes[6].innerHTML != "") && (boxes[0].innerHTML == boxes[3].innerHTML && boxes[0].innerHTML == boxes[6].innerHTML)){
-        console.log("yay");
-        clearInterval(myWinChecker);
+        clearAndRestart()
     } else if ((boxes[0].innerHTML != "" && boxes[4].innerHTML != "" && boxes[8].innerHTML != "") && (boxes[0].innerHTML == boxes[4].innerHTML && boxes[0].innerHTML == boxes[8].innerHTML)){
-        console.log("yay");
-        clearInterval(myWinChecker);
+        clearAndRestart()
     } else if ((boxes[1].innerHTML != "" && boxes[4].innerHTML != "" && boxes[7].innerHTML != "") && (boxes[1].innerHTML == boxes[4].innerHTML && boxes[1].innerHTML == boxes[7].innerHTML)){
-        console.log("yay");
-        clearInterval(myWinChecker);
+        clearAndRestart()
     } else if ((boxes[2].innerHTML != "" && boxes[4].innerHTML != "" && boxes[6].innerHTML != "") && (boxes[2].innerHTML == boxes[4].innerHTML && boxes[2].innerHTML == boxes[6].innerHTML)){
-        console.log("yay");
-        clearInterval(myWinChecker);
+        clearAndRestart()
     } else if ((boxes[2].innerHTML != "" && boxes[5].innerHTML != "" && boxes[8].innerHTML != "") && (boxes[2].innerHTML == boxes[5].innerHTML && boxes[2].innerHTML == boxes[8].innerHTML)){
-        console.log("yay");
-        clearInterval(myWinChecker);
+        clearAndRestart()
     } else if ((boxes[3].innerHTML != "" && boxes[4].innerHTML != "" && boxes[5].innerHTML != "") && (boxes[3].innerHTML == boxes[4].innerHTML && boxes[3].innerHTML == boxes[5].innerHTML)){
-        console.log("yay");
-        clearInterval(myWinChecker);
+        clearAndRestart()
     } else if ((boxes[6].innerHTML != "" && boxes[7].innerHTML != "" && boxes[8].innerHTML != "") && (boxes[6].innerHTML == boxes[7].innerHTML && boxes[6].innerHTML == boxes[8].innerHTML)){
-        console.log("yay");
-        clearInterval(myWinChecker);
+        clearAndRestart()
     } else if (boxes[0].innerHTML != "" && boxes[1].innerHTML != "" && boxes[2].innerHTML != "" && boxes[3].innerHTML != "" && boxes[4].innerHTML != "" && boxes[5].innerHTML != "" && boxes[6].innerHTML != "" && boxes[7].innerHTML != "" && boxes[8].innerHTML != "") {
-        console.log("draw");
-        clearInterval(myWinChecker);
+        clearAndRestart()
     }
 }
 
-const myWinChecker = setInterval(checkWin, 100);
+function clearAndRestart(){
+    clearInterval(myWinChecker);
+    gameActive = false;
+    boxes.forEach((box)=>{
+        box.innerHTML = "";
+    })
+    gameActive = false;
+    playerTurnDisplay.classList.add("hide");
+    startButton.classList.remove("hide");
+}
