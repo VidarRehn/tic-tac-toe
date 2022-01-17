@@ -61,7 +61,10 @@ function checkWin(){
     } else if ((boxes[6].innerHTML != "" && boxes[7].innerHTML != "" && boxes[8].innerHTML != "") && (boxes[6].innerHTML == boxes[7].innerHTML && boxes[6].innerHTML == boxes[8].innerHTML)){
         console.log("yay");
         clearInterval(myWinChecker);
-    } 
+    } else if (boxes[0].innerHTML != "" && boxes[1].innerHTML != "" && boxes[2].innerHTML != "" && boxes[3].innerHTML != "" && boxes[4].innerHTML != "" && boxes[5].innerHTML != "" && boxes[6].innerHTML != "" && boxes[7].innerHTML != "" && boxes[8].innerHTML != "") {
+        console.log("draw");
+        clearInterval(myWinChecker);
+    }
 }
 
 const myWinChecker = setInterval(checkWin, 100);
