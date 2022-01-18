@@ -22,7 +22,7 @@ startButton.addEventListener("click", ()=>{
     startButton.classList.add("hide");
     playerTurnDisplay.classList.remove("hide");
     playingBoard.classList.remove("hide");
-    playerTurnDisplay.innerText = `Player ${playerTurn}, it's your turn`;
+    playerTurnDisplay.innerText = `Circles, it's your turn`;
     boxes.forEach((box)=>{
         if (gameActive == true){
             if (win == false){
@@ -31,11 +31,11 @@ startButton.addEventListener("click", ()=>{
                         if (playerTurn == 1){
                             box.innerHTML = circle;
                             playerTurn = 2;
-                            playerTurnDisplay.innerText = `Player ${playerTurn}, it's your turn`;
+                            playerTurnDisplay.innerText = `Crosses, it's your turn`;
                         } else {
                             box.innerHTML = cross;
                             playerTurn = 1;
-                            playerTurnDisplay.innerText = `Player ${playerTurn}, it's your turn`;
+                            playerTurnDisplay.innerText = `Circles, it's your turn`;
                         }
                     }
                 })
